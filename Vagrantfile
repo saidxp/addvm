@@ -6,7 +6,10 @@ Vagrant.configure("2") do |config|
   box_name = ENV.fetch("VAGRANT_BOX", "debian13-local")
   config.vm.box = box_name
 
-  # i was add manual in box to this va
+  # Custom Debian 13 box hosted as a GitHub Release asset, so a fresh clone
+  # can run `vagrant up` without manually adding the box first. Ignored when
+  # the box is already present locally.
+  config.vm.box_url = "https://github.com/saidxp/addvm/releases/download/box/debian13.box"
 
   config.vm.hostname = "vbox"
 

@@ -62,7 +62,18 @@ Verification (verify.sh)
 
 ## 3. Quick Start & Execution Commands
 
-### Add Local Base Box (if not already added)
+### Add Local Base Box (optional)
+
+The `Vagrantfile` points at the base box hosted on GitHub Releases, so a fresh
+clone needs no manual box installation:
+
+```bash
+git clone https://github.com/saidxp/addvm.git
+cd addvm
+vagrant up   # imports debian13-local from the release asset automatically
+```
+
+To use a locally built copy of the box instead:
 
 ```bash
 vagrant box add debian13-local debian13.box
