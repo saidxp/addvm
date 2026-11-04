@@ -1,0 +1,10 @@
+[Unit]
+Description=My system monitoring service
+
+[Service]
+ExecStart=/usr/local/bin/myservice.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

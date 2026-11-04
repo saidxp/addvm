@@ -1,0 +1,17 @@
+# Vagrant runtime state
+.vagrant/
+
+# Local base box images
+*.box
+
+# Private SSH keys (only public keys *.pub belong in the repository)
+keys/admin1
+keys/developer1
+keys/deploy1
+*.pem
+*.key
+!keys/*.pub
+
+# Logs and temporary files
+*.log
+*.tmp
