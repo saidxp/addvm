@@ -199,6 +199,7 @@ fi
 # ------------------------------------------------------------------------------
 # 7. Sticky-Bit Scratch Directory Verification
 # ------------------------------------------------------------------------------
+
 echo "--- 7. Sticky-Bit Scratch Directory Verification ---"
 SCRATCH_DIR="/home/soubaaiss/test/scratch"
 if [ -d "$SCRATCH_DIR" ]; then
