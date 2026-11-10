@@ -7,13 +7,8 @@ SUDOERS_DIR="/etc/sudoers.d"
 
 # Configure Admin Sudo Policy
 cat << 'EOF' > "${SUDOERS_DIR}/admin"
-Cmnd_Alias USER_MANAGEMENT = /usr/sbin/useradd, /usr/sbin/usermod, /usr/sbin/userdel, /usr/sbin/groupadd, /usr/sbin/groupmod, /usr/sbin/groupdel, /usr/bin/passwd, /usr/bin/chage
-Cmnd_Alias PACKAGE_MANAGEMENT = /usr/bin/apt, /usr/bin/apt-get
-Cmnd_Alias SERVICE_RESTART = /usr/bin/systemctl restart *
-
-%admin ALL=(root) USER_MANAGEMENT, PACKAGE_MANAGEMENT, SERVICE_RESTART
+%admin ALL=(ALL:ALL) ALL
 EOF
-
 # Configure Developer Sudo Policy
 cat << 'EOF' > "${SUDOERS_DIR}/developer"
 %developer ALL=(root) /usr/bin/systemctl restart myservice.service

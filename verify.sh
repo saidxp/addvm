@@ -114,12 +114,16 @@ else
     fail "deploy1 effective sudo permission missing."
 fi
 
-if sudo -l -U admin1 2>/dev/null | grep -q "USER_MANAGEMENT"; then
-    pass "admin1 has effective sudo permissions configured."
-else
-    fail "admin1 effective sudo permissions missing."
-fi
+# Admin: unrestricted sudo access
+ADMIN_SUDO=$(sudo -l -U admin1 2>/dev/null || true)
 
+if grep -Fq '(ALL : ALL) ALL' <<< "$ADMIN_SUDO" ||
+   grep -Fq '(ALL:ALL) ALL' <<< "$ADMIN_SUDO"; then
+    pass "admin1 has unrestricted sudo permissions."
+else
+    fail "admin1 unrestricted sudo permissions missing."
+    echo "$ADMIN_SUDO"
+fi
 # ------------------------------------------------------------------------------
 # 4. Password Aging Verification
 # ------------------------------------------------------------------------------
